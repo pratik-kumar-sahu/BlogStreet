@@ -8,3 +8,5 @@ Changes after fourth commit.
 
 Changes after fifth commit.
 First commit in branch B.
+
+Second commit in branch B.
