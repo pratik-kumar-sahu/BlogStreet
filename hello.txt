@@ -1,3 +1,4 @@
 Changes after first commit.
 
 Changes after second commit.
+First commit in branch A.
