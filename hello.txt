@@ -9,3 +9,5 @@ Changes after fourth commit.
 Changes after fifth commit.
 
 Changes after sixth commit.
+
+Changes after seventh commit.
