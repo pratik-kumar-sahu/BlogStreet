@@ -8,6 +8,7 @@ Changes after third commit.
 Changes after fourth commit.
 
 Changes after fifth commit.
+<<<<<<< HEAD
 
 Changes after sixth commit.
 
@@ -17,3 +18,8 @@ First commit in branch A.
 
 Second commit in branch A.
 >>>>>>> A
+=======
+First commit in branch B.
+
+Second commit in branch B.
+>>>>>>> B
