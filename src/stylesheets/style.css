@@ -1,0 +1,134 @@
+* {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.brand-name-user {
+  font-size: 250%;
+  margin-left: 3%;
+}
+/* 
+  .card-img-top {
+    width: 100%;
+    height: 13vw;
+    object-fit: cover;
+  } */
+
+.size-user {
+  border-radius: 10px;
+  height: 250px;
+  width: 400px;
+  object-fit: cover;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+form {
+  float: right;
+  width: 20%;
+}
+
+.nav-tabs {
+  float: left;
+  width: 45%;
+}
+
+.nav-user-one {
+  float: right;
+}
+
+.nav-user {
+  margin-right: 5%;
+}
+
+.header-content {
+  padding: 5% 0;
+}
+
+.header-heading {
+  text-align: center;
+}
+
+.card-img-top {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.card-user {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-style: none;
+}
+
+/* Equal-height card images */
+.card-img-top {
+  /*height: 11vw;*/
+  object-fit: cover;
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .card-img-top {
+    height: 19vw;
+  }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .card-img-top {
+    height: 16vw;
+  }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .card-img-top {
+    height: 14vw;
+  }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 992px) {
+  .card-img-top {
+    height: 15vw;
+  }
+}
+
+.brag-user {
+  padding: 8% 0;
+  justify-content: center;
+}
+
+.size-user-two {
+  border-radius: 10px;
+  height: 250px;
+  width: 400px;
+  object-fit: cover;
+  margin-left: 10%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.newsletter {
+  width: 50%;
+  margin: auto 25%;
+}
+
+.newsletter-checkbox {
+  width: 50%;
+  margin: auto 26%;
+}
+
+.margin-user {
+  margin-top: 5%;
+}
+
+.faq-heading {
+  text-align: center;
+}
+
+.accordion {
+  width: 70%;
+  margin: auto 15%;
+}

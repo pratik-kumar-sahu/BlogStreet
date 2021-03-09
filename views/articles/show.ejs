@@ -1,0 +1,105 @@
+<%- include('../partials/header.ejs') -%>
+
+<!-- <div class="container">
+  <h1 class="mb-1"><%= article.title %></h1>
+  <div class="text-muted mb-2">
+    <%= article.createdAt.toLocaleDateString() %>
+  </div>
+  <a href="/" class="btn btn-seconday">All Articles</a>
+  <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+
+  <div><%= article.markdown %></div>
+</div> -->
+<style>
+  * {
+    font-family: 'Source Code Pro', monospace;
+  }
+
+  .blog-content {
+    padding: 0 8%;
+  }
+
+  .blog-content .content-right {
+    float: right;
+  }
+
+  .lists {
+    padding-left: 5%;
+    padding-top: 1%;
+  }
+
+  .blog-image {
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .stand-out {
+    font-weight: 600;
+  }
+
+
+</style>
+
+<div class="container">
+  <div class="row mt-5 blog-content">
+    <h2 class="stand-out"><%= article.title %></h2>
+  </div>
+  <div class="row mt-5 blog-content">
+    <div class="col">
+      <small>Created by</small>
+      <h5 class="stand-out">Jasmine</h5>
+    </div>
+    <div class="col">
+      <div class="content-right">
+        <small>Time</small>
+        <h5 class="stand-out">2 min read</h5>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row mt-5">
+    <img src="<%= article.image %>" alt="image" class="blog-image" />
+  </div>
+  <div class="row mt-5 blog-content">
+    <h4>Steps to Follow :</h4>
+    <ol class="lists">
+      <li>Be Passionate.</li>
+      <li>Start While You Are Still Employed.</li>
+      <li>Don't Do it Alone.</li>
+      <li>Get Clients or Customers Lined Up.</li>
+      <li>Write a Business Plan.</li>
+      <li>Do Your Research.</li>
+    </ol>
+    <p><%= article.markdown %></p>
+  </div>
+  <hr>
+</div>
+
+<div class="container">
+  <div class="row mt-5 blog-content">
+    <h2 class="stand-out">Comments</h2>
+  </div>
+  <div class="row mt-3 blog-content">
+    <form action="/articles/<%= article._id %>/comments" method="POST">
+      <textarea style="display: block;" name="content" id="" cols="91" rows="5" placeholder="Add comments here..."></textarea>
+      <!-- <input type="text" name="content" class="form-control"> -->
+      <button type="submit" class="btn btn-primary mt-3">Post</button>
+      <!-- <a style="float: right;" class="btn btn-primary mt-3 mb-3" href="/articles/<%= article._id %>" type="submit">Post</a> -->
+    </form>
+  </div>
+  <hr>
+</div>
+
+<div class="container">
+  <div class="row mt-5 blog-content">
+    <% article.comments.forEach(comment => { %>
+    <div class="mb-2">
+      ◼️ <span style="display: inline;">Author Name</span> ◾ <small>Mar 04</small>
+      <p>➡️<%= comment.content %></p>
+    </div>
+    <% }) %>
+  </div>
+  <hr>
+</div>
+
+<%- include('../partials/footer.ejs') -%>

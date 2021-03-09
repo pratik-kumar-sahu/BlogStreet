@@ -1,0 +1,403 @@
+<%- include('../partials/header.ejs') -%>
+
+<!-- Header Section -->
+<div class="container">
+  <div class="row">
+    <div class="header-heading mt-5">
+      <h2>BlogStreet Blogs</h2>
+      <h3>Get Quality Tips & Insights To Your Inbox</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mt-5">
+      <img
+        class="size-user"
+        src="https://images.unsplash.com/photo-1612831660296-0cd5841b89fb?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+        alt="Card image cap"
+      />
+    </div>
+    <div class="col mt-5">
+      <div class="header-content">
+        <small>Most Popular</small>
+        <h2>BlogStreet career guide: How to become a Blogger</h2>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Search bar & Tabs -->
+<div class="container">
+  <div class="row">
+    <div class="mt-5">
+      <ul class="nav nav-tabs">
+        <li class="nav-item nav-user">
+          <a class="nav-link active" aria-current="page" href="#">Newest</a>
+        </li>
+        <li class="nav-item nav-user">
+          <a class="nav-link" href="#">Popular</a>
+        </li>
+        <li class="nav-item nav-user">
+          <a class="nav-link" href="#">All Time</a>
+        </li>
+      </ul>
+      <form style="display: inline-block; width: 30%;" class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search Blog"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Blog content section -->
+<div class="container">
+  <div class="row mt-5" style="width: 50%; margin: 0 25%">
+    <a href="/articles/new" class="btn btn-primary">Write Blog Here</a>
+  </div>
+
+  <div class="row">
+    <% articles.forEach(article => { %>
+    <div class="col-md-6 col-lg-4 mt-5">
+      <div class="card card-user" style="width: 20rem">
+        <img class="card-img-top" src="<%= article.image %>" alt="image" />
+        <!-- https://images.unsplash.com/photo-1614588108027-22a021c8d8e1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80 -->
+        <div class="card-body">
+          <h5 class="card-title"><%= article.title %></h5>
+          <div class="card-subtitle text-muted mb-2">
+            <%= article.createdAt.toLocaleDateString() %>
+          </div>
+          <p class="card-text"><%= article.description %></p>
+          <a href="articles/<%= article.id %>" class="btn btn-primary"
+            >Read More</a
+          >
+          <a style="display: inline-block;" href="articles/<%= article.id %>/edit" class="btn btn-info">Edit</a>
+          
+          <form style="padding-right: 90px;" action="/articles/<%= article.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<!-- Pagination -->
+<div class="container">
+  <div class="row mt-5">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- Brag section -->
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <div class="brag-user">
+        <!-- <small>Most Popular</small> -->
+        <h2>1 Lakh+ Bloggers have been successful</h2>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </p>
+        <button type="button" class="btn btn-primary">Read Stories</button>
+      </div>
+    </div>
+    <div class="col">
+      <img
+        class="size-user-two"
+        src="https://images.unsplash.com/photo-1612831660296-0cd5841b89fb?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+        alt="Card image cap"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter section -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="header-heading">
+      <h3>Be complete with our Newsletter</h3>
+      <h3>Join Now!</h3>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <form class="d-flex newsletter">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Enter Your Email"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" type="submit">Subscribe</button>
+    </form>
+    <div class="form-check newsletter-checkbox mt-3">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckChecked"
+        checked
+      />
+      <label class="form-check-label" for="flexCheckChecked">
+        Send me insightful product news and occasional offers. You can
+        Unsubscribe anytime.
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="container margin-user">
+  <div class="row mb-3">
+    <h1 class="faq-heading">FAQ</h1>
+  </div>
+  <div class="row">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            Where to contact in case of issues?
+          </button>
+        </h2>
+        <div
+          id="collapseOne"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <strong>Here!</strong> It is hidden by default, until the collapse
+            plugin adds the appropriate classes that we use to style each
+            element. These classes control the overall appearance, as well as
+            the showing and hiding via CSS transitions. You can modify any of
+            this with custom CSS or overriding our default variables. It's also
+            worth noting that just about any HTML can go within the
+            <code>.accordion-body</code>, though the transition does limit
+            overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            Who can join BlogStreet?
+          </button>
+        </h2>
+        <div
+          id="collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <strong>This is the second item's accordion body.</strong> It is
+            hidden by default, until the collapse plugin adds the appropriate
+            classes that we use to style each element. These classes control the
+            overall appearance, as well as the showing and hiding via CSS
+            transitions. You can modify any of this with custom CSS or
+            overriding our default variables. It's also worth noting that just
+            about any HTML can go within the <code>.accordion-body</code>,
+            though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseThree"
+            aria-expanded="false"
+            aria-controls="collapseThree"
+          >
+            Can I edit my blog posts?
+          </button>
+        </h2>
+        <div
+          id="collapseThree"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <strong>This is the third item's accordion body.</strong> It is
+            hidden by default, until the collapse plugin adds the appropriate
+            classes that we use to style each element. These classes control the
+            overall appearance, as well as the showing and hiding via CSS
+            transitions. You can modify any of this with custom CSS or
+            overriding our default variables. It's also worth noting that just
+            about any HTML can go within the <code>.accordion-body</code>,
+            though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour"
+          >
+            Can I report posts, comments and users who don't follow Code of
+            Conduct?
+          </button>
+        </h2>
+        <div
+          id="collapseFour"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingFour"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <strong>This is the third item's accordion body.</strong> It is
+            hidden by default, until the collapse plugin adds the appropriate
+            classes that we use to style each element. These classes control the
+            overall appearance, as well as the showing and hiding via CSS
+            transitions. You can modify any of this with custom CSS or
+            overriding our default variables. It's also worth noting that just
+            about any HTML can go within the <code>.accordion-body</code>,
+            though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFive"
+            aria-expanded="false"
+            aria-controls="collapseFive"
+          >
+            How can I change my username?
+          </button>
+        </h2>
+        <div
+          id="collapseFive"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingFive"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <strong>This is the third item's accordion body.</strong> It is
+            hidden by default, until the collapse plugin adds the appropriate
+            classes that we use to style each element. These classes control the
+            overall appearance, as well as the showing and hiding via CSS
+            transitions. You can modify any of this with custom CSS or
+            overriding our default variables. It's also worth noting that just
+            about any HTML can go within the <code>.accordion-body</code>,
+            though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSix">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseSix"
+            aria-expanded="false"
+            aria-controls="collapseSix"
+          >
+            Can I be a paid member in BlogStreet?
+          </button>
+        </h2>
+        <div
+          id="collapseSix"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingSix"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <strong>This is the third item's accordion body.</strong> It is
+            hidden by default, until the collapse plugin adds the appropriate
+            classes that we use to style each element. These classes control the
+            overall appearance, as well as the showing and hiding via CSS
+            transitions. You can modify any of this with custom CSS or
+            overriding our default variables. It's also worth noting that just
+            about any HTML can go within the <code>.accordion-body</code>,
+            though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSeven">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseSeven"
+            aria-expanded="false"
+            aria-controls="collapseSeven"
+          >
+            Where's BlogStreet's privacy policies and terms of conditions?
+          </button>
+        </h2>
+        <div
+          id="collapseSeven"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingSeven"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <strong>This is the third item's accordion body.</strong> It is
+            hidden by default, until the collapse plugin adds the appropriate
+            classes that we use to style each element. These classes control the
+            overall appearance, as well as the showing and hiding via CSS
+            transitions. You can modify any of this with custom CSS or
+            overriding our default variables. It's also worth noting that just
+            about any HTML can go within the <code>.accordion-body</code>,
+            though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer.ejs') -%>
