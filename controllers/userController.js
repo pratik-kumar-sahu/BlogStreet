@@ -8,6 +8,7 @@ exports.getRegisterRoute = (req, res) => {
 exports.createUser = async (req, res) => {
   await User.findOne({ email: req.body.email }, (err, foundUser) => {
     if (foundUser) {
+      req.flash('message', 'Email already registered. Please login!');
       return res.redirect('/auth/login');
     } else {
       try {
@@ -16,9 +17,12 @@ exports.createUser = async (req, res) => {
           email: req.body.email,
           password: req.body.password,
         });
-        user.save();
+        const success = user.save();
         req.session.userId = user._id;
-        res.redirect('/');
+        if (success) {
+          req.flash('message', 'Registered successfully');
+          res.redirect('/');
+        }
       } catch (error) {
         console.log(error.message);
         return res.redirect('/auth/register');
@@ -28,7 +32,7 @@ exports.createUser = async (req, res) => {
 };
 
 exports.getLoginRoute = (req, res) => {
-  res.render('login');
+  res.render('login', { message: req.flash('message') });
 };
 
 exports.loginUser = async (req, res) => {
@@ -42,6 +46,7 @@ exports.loginUser = async (req, res) => {
           res.redirect('/auth/login');
         } else {
           req.session.userId = user._id;
+          req.flash('message', 'Logged In successfully');
           res.redirect('/');
         }
       });

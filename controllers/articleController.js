@@ -1,9 +1,14 @@
 const Article = require('../models/articleModel');
+const User = require('../models/userModel');
 
 exports.getHomepage = async (req, res) => {
   try {
     const articles = await Article.find().sort({ createdAt: 'desc' });
-    res.render('articles/index', { articles: articles });
+    // console.log(articles);
+    res.render('articles/index', {
+      articles: articles,
+      message: req.flash('message'),
+    });
   } catch (error) {
     console.log(error.message);
   }
@@ -11,7 +16,10 @@ exports.getHomepage = async (req, res) => {
 
 exports.newArticleRoute = (req, res) => {
   if (req.session.userId) {
-    return res.render('articles/new', { article: new Article() });
+    return res.render('articles/new', {
+      article: new Article(),
+      message: req.flash('message'),
+    });
   }
   res.redirect('/auth/login');
 };
@@ -21,57 +29,74 @@ exports.getArticle = async (req, res) => {
     const article = await Article.findOne({ _id: req.params.id }).populate(
       'comments'
     );
-    if (article) {
-      res.render('articles/show', { article });
+    const author = await User.findOne({ _id: req.session.userId });
+    // console.log(article.authorEmail);
+    if (author != null) {
+      if (article.authorEmail === author.email) {
+        foundAuthor = author;
+      } else if (author.role === 'Admin') {
+        foundAuthor = author;
+      } else {
+        foundAuthor = null;
+      }
+    } else {
+      foundAuthor = null;
     }
+    res.render('articles/show', {
+      article: article,
+      foundAuthor: foundAuthor,
+      message: req.flash('message'),
+    });
   } catch (error) {
     console.log(error.message);
     res.redirect('/');
   }
-
-  // try {
-  //   const article = await Article.findById(req.params.id);
-  //   if (article == null) res.redirect('/');
-  //   res.render('articles/show', { article: article });
-  // } catch (error) {
-  //   console.log(error.message);
-  // }
 };
 
 exports.createArticle = async (req, res) => {
+  // console.log(req.session.userId);
+  const user = await User.findOne({ _id: req.session.userId });
   let article = new Article({
     title: req.body.title,
     image: req.body.image,
     description: req.body.description,
     markdown: req.body.markdown,
-    // author: {
-    //   id: req.user._id,
-    //   username: req.user.username,
-    // },
+    author: user.username,
+    authorEmail: user.email,
   });
   try {
-    await article.save();
-    res.redirect(`/articles/${article.id}`);
+    const success = await article.save();
+    if (success) {
+      req.flash('message', 'Successfully posted');
+      res.redirect(`/articles/${article.id}`);
+    }
   } catch (err) {
     console.log(err.message);
-    res.render('articles/new', { article: article });
+    req.flash('message', 'Error occurred');
+    res.render('articles/new', {
+      article: article,
+      message: req.flash('message'),
+    });
   }
 };
 
-exports.getEditRoute = (req, res) => {
-  Article.findById(req.params.id, (err, article) => {
-    res.render('articles/edit', { article: article });
-  });
+exports.getEditRoute = async (req, res) => {
+  const article = await Article.findById(req.params.id);
+  res.render('articles/edit', { article: article });
 };
 
-exports.editArticle = (req, res) => {
-  Article.findByIdAndUpdate(req.params.id, req.body, (err, article) => {
-    if (err) {
-      res.redirect('/');
-    } else {
-      res.redirect(`/articles/${req.params.id}`);
-    }
-  });
+exports.editArticle = async (req, res) => {
+  let article = await Article.findById(req.params.id);
+  article.title = req.body.title;
+  article.image = req.body.image;
+  article.description = req.body.description;
+  article.markdown = req.body.markdown;
+  try {
+    article = await article.save();
+    res.redirect(`/articles/${article.id}`);
+  } catch (error) {
+    res.render('articles/new', { article: article });
+  }
 };
 
 exports.deleteArticle = async (req, res) => {
