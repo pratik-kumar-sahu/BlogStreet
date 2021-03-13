@@ -1,140 +1,155 @@
 <%- include('./partials/header.ejs') -%>
 
 <style>
-  .form-heading {
-    color: #fff;
-    font-size: 23px;
-  }
+  :root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
 
-  .panel h2 {
-    color: #444444;
-    font-size: 18px;
-    margin: 0 0 8px 0;
-  }
+body {
+  background: #ffffff;
+}
 
-  .panel p {
-    color: #777777;
-    font-size: 14px;
-    margin-bottom: 30px;
-    line-height: 24px;
-  }
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
 
-  .login-form .form-control {
-    background: #f7f7f7 none repeat scroll 0 0;
-    border: 1px solid #d4d4d4;
-    border-radius: 4px;
-    font-size: 14px;
-    height: 50px;
-    line-height: 50px;
-  }
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
 
-  .main-div {
-    background: #ffffff none repeat scroll 0 0;
-    border-radius: 2px;
-    margin: 10px auto 30px;
-    max-width: 38%;
-    padding: 50px 70px 70px 71px;
-  }
+.card-signin .card-body {
+  padding: 2rem;
+}
 
-  .login-form .form-group {
-    margin-bottom: 10px;
-  }
+.form-signin {
+  width: 100%;
+}
 
-  .login-form {
-    text-align: center;
-  }
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
 
-  .forgot a {
-    color: #777777;
-    font-size: 14px;
-    text-decoration: underline;
-  }
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
 
-  .login-form .btn.btn-primary {
-    background-color: #f0ad4e;
-    border-color: #f0ad4e;
-    color: #ffffff;
-    font-size: 14px;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    padding: 0;
-  }
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
 
-  .forgot {
-    text-align: left;
-    margin-bottom: 30px;
-  }
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
 
-  .back {
-    text-align: left;
-    margin-top: 10px;
-  }
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
 
-  .back a {
-    color: #444444;
-    font-size: 13px;
-    text-decoration: none;
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+  .form-label-group>label {
+    display: none;
   }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
 </style>
 
 <div class="container">
-  <div class="login-form">
-    <div class="main-div">
-      <div class="panel">
-        <h2>SignUp</h2>
-        <!-- <p>Please enter your email and password</p> -->
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign Up</h5>
+          <form action="/users/register" method="POST" class="form-signin">
+            <div class="form-label-group">
+              <input name="username" type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+              <label for="inputUsername">Username</label>
+            </div>
+            <div class="form-label-group">
+              <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+              <label for="inputEmail">Email address</label>
+            </div>
+            <div class="form-label-group">
+              <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <label for="inputPassword">Password</label>
+            </div>
+            <button style="background-color: #6C63FF;" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+          </form>
+        </div>
       </div>
-      <form action="/users/register" method="POST">
-        <div class="form-group">
-          <input
-            type="text"
-            name="username"
-            value="<%= typeof username != 'undefined' ? username : '' %>"
-            class="form-control"
-            id="username"
-            placeholder="Username"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            type="email"
-            name="email"
-            value="<%= typeof email != 'undefined' ? email : '' %>"
-            class="form-control"
-            id="email"
-            placeholder="Email Address"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            type="password"
-            name="password"
-            value="<%= typeof password != 'undefined' ? password : '' %>"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-
-        <!-- <div class="form-group">
-          <input
-            type="password"
-            class="form-control"
-            id="inputPassword"
-            placeholder="Confirm Password"
-          /> -->
-        <!-- </div> -->
-        <!-- <div class="forgot">
-          <a href="#">Forgot password?</a>
-        </div> -->
-      </form>
     </div>
   </div>
 </div>

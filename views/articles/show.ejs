@@ -11,10 +11,6 @@
   <div><%= article.markdown %></div>
 </div> -->
 <style>
-  * {
-    font-family: 'Source Code Pro', monospace;
-  }
-
   .blog-content {
     padding: 0 8%;
   }
@@ -40,28 +36,33 @@
 
 </style>
 
+<% if (message.length > 0) { %>
+  <div class="alert alert-success">
+    <%= message %>
+  </div>
+<% } %>
 <div class="container">
-  <div class="row mt-5 blog-content">
+  <div class="row mt-4 blog-content">
     <h2 class="stand-out"><%= article.title %></h2>
   </div>
-  <div class="row mt-5 blog-content">
+  <div class="row mt-3 blog-content">
     <div class="col">
       <small>Created by</small>
-      <h5 class="stand-out">Jasmine</h5>
+      <h5 class="stand-out"><%= (article.author).charAt(0).toUpperCase() + (article.author).slice(1) %></h5>
     </div>
     <div class="col">
       <div class="content-right">
-        <small>Time</small>
-        <h5 class="stand-out">2 min read</h5>
+        <small>Published on</small>
+        <h5 class="stand-out"><%= article.createdAt.toLocaleDateString() %></h5>
       </div>
     </div>
   </div>
   <hr />
-  <div class="row mt-5">
+  <div class="row mt-4">
     <img src="<%= article.image %>" alt="image" class="blog-image" />
   </div>
-  <div class="row mt-5 blog-content">
-    <h4>Steps to Follow :</h4>
+  <div class="row mt-3 blog-content">
+    <!-- <h4>Steps to Follow :</h4>
     <ol class="lists">
       <li>Be Passionate.</li>
       <li>Start While You Are Still Employed.</li>
@@ -69,22 +70,20 @@
       <li>Get Clients or Customers Lined Up.</li>
       <li>Write a Business Plan.</li>
       <li>Do Your Research.</li>
-    </ol>
-    <p><%= article.markdown %></p>
+    </ol> -->
+    <p><%- article.sanitizedHtml %></p>
   </div>
   <hr>
 </div>
 
 <div class="container">
-  <div class="row mt-5 blog-content">
+  <div class="row mt-3 blog-content">
     <h2 class="stand-out">Comments</h2>
   </div>
   <div class="row mt-3 blog-content">
     <form action="/articles/<%= article._id %>/comments" method="POST">
-      <textarea style="display: block;" name="content" id="" cols="91" rows="5" placeholder="Add comments here..."></textarea>
-      <!-- <input type="text" name="content" class="form-control"> -->
-      <button type="submit" class="btn btn-primary mt-3">Post</button>
-      <!-- <a style="float: right;" class="btn btn-primary mt-3 mb-3" href="/articles/<%= article._id %>" type="submit">Post</a> -->
+      <textarea style="width: 100%; height: 100px; display: block;" name="content" cols="91" rows="10" placeholder="Add comments here..." required></textarea>
+      <button style="background-color: #6C63FF;" type="submit" class="btn btn-primary mt-3">Post</button>
     </form>
   </div>
   <hr>
@@ -94,12 +93,34 @@
   <div class="row mt-5 blog-content">
     <% article.comments.forEach(comment => { %>
     <div class="mb-2">
-      ◼️ <span style="display: inline;">Author Name</span> ◾ <small>Mar 04</small>
-      <p>➡️<%= comment.content %></p>
+      📛 <span style="display: inline;"><em><%= (comment.author).charAt(0).toUpperCase() + (comment.author).slice(1) %></em></span> ◾ <small><%= comment.createdAt.toLocaleDateString() %></small>
+      <p>➡️ <%= comment.content %></p>
+      <% if (foundAuthor != null) { %> 
+      <% if (foundAuthor.role === 'Admin') { %>
+      <form style="float: left;" action="/articles/<%= article.id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn-danger">Delete comment</button>
+      </form>
+      <% } %>
+      <% } %>
     </div>
     <% }) %>
   </div>
   <hr>
 </div>
+
+<% if (user && foundAuthor != null) { %>
+  <div class="container">
+    <div class="row mt-5 mb-2 blog-content">
+      <div style="float: left;">
+        <a href="<%= article.id %>/edit" class="btn btn-info">Edit Blog</a>
+      </div>
+    </div>
+    <div class="row mb-5 blog-content">
+        <form action="/articles/<%= article.id %>?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger">Delete Blog</button>
+        </form>
+    </div>
+  </div>
+<% } %>
 
 <%- include('../partials/footer.ejs') -%>

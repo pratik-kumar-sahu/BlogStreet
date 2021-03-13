@@ -1,9 +1,15 @@
 <%- include('../partials/header.ejs') -%>
 
-<div class="container">
+<% if (message.length > 0) { %>
+  <div class="alert alert-danger">
+    <%= message %>
+  </div>
+<% } %>
+
+<div class="container mt-4">
   <h1 class="mb-4">New Article</h1>
-  <form action="/articles" method="POST">
-    <div class="form-group">
+  <form class="mb-4" action="/articles" method="POST">
+    <div class="form-group mb-2">
       <label for="title">Title</label>
       <input
         required
@@ -12,9 +18,10 @@
         name="title"
         id="title"
         class="form-control"
+        placeholder="Give a wonderful title"
       />
     </div>
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="image">Image Url</label>
       <input
         required
@@ -23,13 +30,14 @@
         name="image"
         id="image"
         class="form-control"
+        placeholder="Give an image url"
       />
     </div>
-    <div class="form-group"><label for="description">Description</label><textarea name="description" id="description" class="form-control"><%= article.description %></textarea>
+    <div class="form-group mb-2"><label for="description">Description</label><textarea name="description" id="description" class="form-control" placeholder="Give one line intro of the blog"><%= article.description %></textarea>
     </div>
-    <div class="form-group">
-      <label for="markdown">Markdown</label>
-      <textarea required name="markdown" id="markdown" class="form-control"><%= article.markdown %></textarea>
+    <div class="form-group mb-3">
+      <label for="markdown">Brief Summary</label>
+      <textarea style="height: 30vh" required name="markdown" id="markdown" class="form-control" placeholder="Write your brief story here..."><%= article.markdown %></textarea>
     </div>
     <a href="/" class="btn btn-seconday">Cancel</a>
     <button type="submit" class="btn btn-primary">Save</button>

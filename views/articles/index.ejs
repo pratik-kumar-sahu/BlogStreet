@@ -1,10 +1,15 @@
 <%- include('../partials/header.ejs') -%>
 
+<% if (message.length > 0) { %>
+  <div class="alert alert-success">
+    <%= message %>
+  </div>
+<% } %>
 <!-- Header Section -->
 <div class="container">
   <div class="row">
     <div class="header-heading mt-5">
-      <h2>BlogStreet Blogs</h2>
+      <h2 style="font-weight: 600;">BlogStreet Blogs</h2>
       <h3>Get Quality Tips & Insights To Your Inbox</h3>
     </div>
   </div>
@@ -12,49 +17,18 @@
     <div class="col mt-5">
       <img
         class="size-user"
-        src="https://images.unsplash.com/photo-1612831660296-0cd5841b89fb?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+        src="../../src/stylesheets/blog-2.png"
         alt="Card image cap"
       />
     </div>
     <div class="col mt-5">
       <div class="header-content">
-        <small>Most Popular</small>
-        <h2>BlogStreet career guide: How to become a Blogger</h2>
+        <!-- <small>Most Popular</small> -->
+        <h2>Embrace the power of <br><strong style="font-size: 100%; text-decoration: underline;">Story-telling</strong>.</h2>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
+          Real ideas require real stories. If you want to inspire people around you, story-telling is one of the most productive ways.
         </p>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- Search bar & Tabs -->
-<div class="container">
-  <div class="row">
-    <div class="mt-5">
-      <ul class="nav nav-tabs">
-        <li class="nav-item nav-user">
-          <a class="nav-link active" aria-current="page" href="#">Newest</a>
-        </li>
-        <li class="nav-item nav-user">
-          <a class="nav-link" href="#">Popular</a>
-        </li>
-        <li class="nav-item nav-user">
-          <a class="nav-link" href="#">All Time</a>
-        </li>
-      </ul>
-      <form style="display: inline-block; width: 30%;" class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search Blog"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </div>
@@ -62,29 +36,37 @@
 <!-- Blog content section -->
 <div class="container">
   <div class="row mt-5" style="width: 50%; margin: 0 25%">
-    <a href="/articles/new" class="btn btn-primary">Write Blog Here</a>
+    <a style="background-color: #6C63FF; width: 80%; margin-left: 10%;" href="/articles/new" class="btn btn-primary">Start writing your blog here</a>
   </div>
+
+<!-- Search bar & Tabs -->
+<div id="stories" class="container">
+  <div class="row">
+    <div class="mt-5">
+      <ul class="nav nav-tabs">
+        <li class="nav-item nav-user">
+          <a style="color: #6C63FF;" class="nav-link active" aria-current="page" href="#">Recent Blogs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
   <div class="row">
     <% articles.forEach(article => { %>
-    <div class="col-md-6 col-lg-4 mt-5">
+    <div style="margin: 0 auto;" class="col-md-6 col-lg-4 mt-5">
       <div class="card card-user" style="width: 20rem">
         <img class="card-img-top" src="<%= article.image %>" alt="image" />
         <!-- https://images.unsplash.com/photo-1614588108027-22a021c8d8e1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80 -->
         <div class="card-body">
           <h5 class="card-title"><%= article.title %></h5>
           <div class="card-subtitle text-muted mb-2">
-            <%= article.createdAt.toLocaleDateString() %>
+            <small><%= article.createdAt.toLocaleDateString() %></small>
           </div>
           <p class="card-text"><%= article.description %></p>
-          <a href="articles/<%= article.id %>" class="btn btn-primary"
+          <a style="background-color: #6C63FF;" href="articles/<%= article.id %>" class="btn btn-primary"
             >Read More</a
           >
-          <a style="display: inline-block;" href="articles/<%= article.id %>/edit" class="btn btn-info">Edit</a>
-          
-          <form style="padding-right: 90px;" action="/articles/<%= article.id %>?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
         </div>
       </div>
     </div>
@@ -93,7 +75,7 @@
 </div>
 
 <!-- Pagination -->
-<div class="container">
+<!-- <div class="container">
   <div class="row mt-5">
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
@@ -104,14 +86,14 @@
         </li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item">
           <a class="page-link" href="#">Next</a>
         </li>
       </ul>
     </nav>
   </div>
-</div>
+</div> -->
 
 <!-- Brag section -->
 <div class="container">
@@ -119,18 +101,17 @@
     <div class="col">
       <div class="brag-user">
         <!-- <small>Most Popular</small> -->
-        <h2>1 Lakh+ Bloggers have been successful</h2>
+        <h2>Blogging is very important for your business.</h2>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+          Drive traffic to your website by writing here and connecting with our thousands of valuable readers.
         </p>
-        <button type="button" class="btn btn-primary">Read Stories</button>
+        <button style="background-color: #6C63FF;" type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="#stories">Read Stories</a></button>
       </div>
     </div>
     <div class="col">
       <img
         class="size-user-two"
-        src="https://images.unsplash.com/photo-1612831660296-0cd5841b89fb?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+        src="../../src/stylesheets/blog-1.png"
         alt="Card image cap"
       />
     </div>
@@ -141,12 +122,12 @@
 <div class="container mt-5">
   <div class="row">
     <div class="header-heading">
-      <h3>Be complete with our Newsletter</h3>
+      <h3>Stay updated with our Newsletter</h3>
       <h3>Join Now!</h3>
     </div>
   </div>
   <div class="row mt-4">
-    <form class="d-flex newsletter">
+    <form action="#" class="d-flex newsletter">
       <input
         class="form-control me-2"
         type="search"
@@ -164,7 +145,7 @@
         checked
       />
       <label class="form-check-label" for="flexCheckChecked">
-        Send me insightful product news and occasional offers. You can
+        We will send you insightful stories, and news. <br>You can
         Unsubscribe anytime.
       </label>
     </div>
@@ -177,7 +158,7 @@
     <h1 class="faq-heading">FAQ</h1>
   </div>
   <div class="row">
-    <div class="accordion" id="accordionExample">
+    <div style="width: 80%; margin-left: 10%;" class="accordion" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button
@@ -198,14 +179,7 @@
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>Here!</strong> It is hidden by default, until the collapse
-            plugin adds the appropriate classes that we use to style each
-            element. These classes control the overall appearance, as well as
-            the showing and hiding via CSS transitions. You can modify any of
-            this with custom CSS or overriding our default variables. It's also
-            worth noting that just about any HTML can go within the
-            <code>.accordion-body</code>, though the transition does limit
-            overflow.
+            Raise an issue at Github here: <strong>https://github.com/pratik-sahu-au13/BlogStreet/issues</strong>
           </div>
         </div>
       </div>
@@ -229,14 +203,7 @@
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>This is the second item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+            Anybody...
           </div>
         </div>
       </div>
@@ -250,7 +217,7 @@
             aria-expanded="false"
             aria-controls="collapseThree"
           >
-            Can I edit my blog posts?
+            Can I edit or delete my blog posts?
           </button>
         </h2>
         <div
@@ -260,14 +227,7 @@
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+            Yes, for that you have to login.
           </div>
         </div>
       </div>
@@ -292,14 +252,7 @@
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+            Just contact us and we will take action.
           </div>
         </div>
       </div>
@@ -323,14 +276,7 @@
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+            Currently we donot support changing usernames. Contact us regarding that.
           </div>
         </div>
       </div>
@@ -354,18 +300,11 @@
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+            In future you can be a paid member.
           </div>
         </div>
       </div>
-      <div class="accordion-item">
+      <div class="accordion-item mb-5">
         <h2 class="accordion-header" id="headingSeven">
           <button
             class="accordion-button collapsed"
@@ -385,14 +324,7 @@
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+            Source code and documents related to BlogStreet is available at Github: <strong>https://github.com/pratik-sahu-au13/BlogStreet</strong>
           </div>
         </div>
       </div>

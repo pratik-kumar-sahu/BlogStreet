@@ -1,0 +1,320 @@
+<%- include('../partials/header.ejs') -%>
+
+<style>
+  :root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+body {
+  background: #ffffff;
+}
+
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.card-signin .card-body {
+  padding: 2rem;
+}
+
+.form-signin {
+  width: 100%;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Portfolio Details</h5>
+          <form action="/portfolio/60486aeb63b439091803e0bc?_method=PUT" method="POST" class="form-signin">
+            <div class="form-label-group">
+              <input name="fullName" type="text" id="fullName" class="form-control" required autofocus>
+              <label for="fullName">Full Name</label>
+            </div>
+            <div class="form-label-group">
+              <input name="who" type="text" id="inputWho" class="form-control" required autofocus>
+              <label for="inputWho">I'm a Full Stack Engineer</label>
+            </div>
+            <div class="form-label-group">
+              <input name="descOneLine" type="text" id="inputdescOneLine" class="form-control" required autofocus>
+              <label for="inputdescOneLine">Describe yourself in one line</label>
+            </div>
+            <!-- <div class="form-label-group">
+              <input name="same as fullName" type="text" id="inputdescOneLine" class="form-control" required autofocus>
+              <label for="inputdescOneLine">Describe yourself in one line</label>
+            </div> -->
+            <div class="form-label-group">
+              <input name="website" type="text" id="inputwebsite" class="form-control" required autofocus>
+              <label for="inputwebsite">Website link</label>
+            </div>
+            <div class="form-label-group">
+              <input name="qualification" type="text" id="inputqualification" class="form-control" required autofocus>
+              <label for="inputqualification">I'm a B.Tech Graduate</label>
+            </div>
+            <div class="form-label-group">
+              <input name="city" type="text" id="inputcity" class="form-control" required autofocus>
+              <label for="inputcity">City</label>
+            </div>
+            <div class="form-label-group">
+              <input name="age" type="text" id="inputage" class="form-control" required autofocus>
+              <label for="inputage">Your Age</label>
+            </div>
+            <div class="form-label-group">
+              <input name="hobbies" type="text" id="inputhobbies" class="form-control" required autofocus>
+              <label for="inputhobbies">Your Hobbies</label>
+            </div>
+            <div class="form-label-group">
+              <input name="email" type="email" id="inputemail" class="form-control" required autofocus>
+              <label for="inputemail">Your Email</label>
+            </div>
+            <div class="form-label-group">
+              <input name="freelance" type="text" id="inputfreelance" class="form-control" required autofocus>
+              <label for="inputfreelance">Available for freelancing?</label>
+            </div>
+            <div class="form-label-group">
+              <input name="skill1" type="text" id="inputskill1" class="form-control" required autofocus>
+              <label for="inputskill1">Skills</label>
+            </div>
+            <div class="form-label-group">
+              <input name="summary" type="text" id="inputsummary" class="form-control" required autofocus>
+              <label for="inputsummary">Summary: What you're looking for</label>
+            </div>
+            <div class="form-label-group">
+              <input name="edu1" type="text" id="inputedu1" class="form-control" required autofocus>
+              <label for="inputedu1">B.Tech CSE</label>
+            </div>
+            <div class="form-label-group">
+              <input name="year1" type="text" id="inputyear1" class="form-control" required autofocus>
+              <label for="inputyear1">Duration</label>
+            </div>
+            <div class="form-label-group">
+              <input name="clg1" type="text" id="inputclg1" class="form-control" required autofocus>
+              <label for="inputclg1">College Name</label>
+            </div>
+            <div class="form-label-group">
+              <input name="desc1" type="text" id="inputdesc1" class="form-control" required autofocus>
+              <label for="inputdesc1">Description</label>
+            </div>
+            <div class="form-label-group">
+              <input name="edu2" type="text" id="inputedu2" class="form-control" required autofocus>
+              <label for="inputedu2">Higher Education</label>
+            </div>
+            <div class="form-label-group">
+              <input name="year2" type="text" id="inputyear2" class="form-control" required autofocus>
+              <label for="inputyear2">Duration</label>
+            </div>
+            <div class="form-label-group">
+              <input name="clg2" type="text" id="inputclg2" class="form-control" required autofocus>
+              <label for="inputclg2">School Name</label>
+            </div>
+            <div class="form-label-group">
+              <input name="desc2" type="text" id="inputdesc2" class="form-control" required autofocus>
+              <label for="inputdesc2">Description</label>
+            </div>
+            <div class="form-label-group">
+              <input name="edu3" type="text" id="inputedu3" class="form-control" required autofocus>
+              <label for="inputedu3">Secondary Education</label>
+            </div>
+            <div class="form-label-group">
+              <input name="year3" type="text" id="inputyear3" class="form-control" required autofocus>
+              <label for="inputyear3">Duration</label>
+            </div>
+            <div class="form-label-group">
+              <input name="clg3" type="text" id="inputclg3" class="form-control" required autofocus>
+              <label for="inputclg3">School Name</label>
+            </div>
+            <div class="form-label-group">
+              <input name="desc3" type="text" id="inputdesc3" class="form-control" required autofocus>
+              <label for="inputdesc3">Description</label>
+            </div>
+            <div class="form-label-group">
+              <input name="exp1" type="text" id="inputexp1" class="form-control" required autofocus>
+              <label for="inputexp1">Experience-1</label>
+            </div>
+            <div class="form-label-group">
+              <input name="inYear1" type="text" id="inputinYear1" class="form-control" required autofocus>
+              <label for="inputinYear1">Year</label>
+            </div>
+            <div class="form-label-group">
+              <input name="location1" type="text" id="inputlocation1" class="form-control" required autofocus>
+              <label for="inputlocation1">Location</label>
+            </div>
+            <div class="form-label-group">
+              <input name="pt1_1" type="text" id="inputpt1_1" class="form-control" required autofocus>
+              <label for="inputpt1_1">point-1</label>
+            </div>
+            <div class="form-label-group">
+              <input name="pt1_2" type="text" id="inputpt1_2" class="form-control" required autofocus>
+              <label for="inputpt1_2">point-2</label>
+            </div>
+            <div class="form-label-group">
+              <input name="pt1_3" type="text" id="inputpt1_3" class="form-control" required autofocus>
+              <label for="inputpt1_3">point-3</label>
+            </div>
+
+            <div class="form-label-group">
+              <input name="exp2" type="text" id="inputexp2" class="form-control" required autofocus>
+              <label for="inputexp2">Experience-2</label>
+            </div>
+            <div class="form-label-group">
+              <input name="inYear2" type="text" id="inputinYear2" class="form-control" required autofocus>
+              <label for="inputinYear2">Year</label>
+            </div>
+            <div class="form-label-group">
+              <input name="location2" type="text" id="inputlocation2" class="form-control" required autofocus>
+              <label for="inputlocation2">Location</label>
+            </div>
+            <div class="form-label-group">
+              <input name="pt2_1" type="text" id="inputpt2_1" class="form-control" required autofocus>
+              <label for="inputpt2_1">point-1</label>
+            </div>
+            <div class="form-label-group">
+              <input name="pt2_2" type="text" id="inputpt2_2" class="form-control" required autofocus>
+              <label for="inputpt2_2">point-2</label>
+            </div>
+            <div class="form-label-group">
+              <input name="pt2_3" type="text" id="inputpt3_3" class="form-control" required autofocus>
+              <label for="inputpt3_3">point-3</label>
+            </div>
+
+            <div class="form-label-group">
+              <input name="twitter" type="text" id="inputtwitter" class="form-control" required autofocus>
+              <label for="inputtwitter">Twitter link</label>
+            </div>
+            <div class="form-label-group">
+              <input name="facebook" type="text" id="inputfacebook" class="form-control" required autofocus>
+              <label for="inputtfacebook">facebook link</label>
+            </div>
+            <div class="form-label-group">
+              <input name="instagram" type="text" id="inputinstagram" class="form-control" required autofocus>
+              <label for="inputinstagram">instagram link</label>
+            </div>
+            <div class="form-label-group">
+              <input name="linkedIn" type="text" id="inputlinkedIn" class="form-control" required autofocus>
+              <label for="inputlinkedIn">linkedIn link</label>
+            </div>
+            <div class="form-label-group">
+              <input name="phone" type="text" id="inputphone" class="form-control" required autofocus>
+              <label for="inputphone">Phone Number</label>
+            </div>
+            <div class="form-label-group">
+              <input name="copyName" type="text" id="inputcopyName" class="form-control" required autofocus>
+              <label for="inputcopyName">Copyright name</label>
+            </div>
+          
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer.ejs') -%>

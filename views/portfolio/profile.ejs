@@ -1,0 +1,28 @@
+<%- include('../partials/header.ejs') -%>
+
+<div class="container mb-3">
+    <div class="row mt-3 mb-2">
+        <h2 style="text-align: center;">Meet Our Story-tellers</h2>
+    </div>
+    <div class="row mb-2">
+      <button style="width: 50%; margin-left: 25%;" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="/portfolio/fill">Build your portfolio here</a></button>
+    </div>
+    <div style="justify-content: center;" class="row">
+        <% portfolios.forEach(portfolio => { %>
+            <div class="card m-3 col-md-6 col-lg-4 mt-2" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><%= portfolio.fullName %></h5>
+                  <p class="card-text"><%= portfolio.who %></p>
+                  <a href="<%= portfolio.id %>" class="btn btn-primary" target="_blank">Go to Portfolio 👉</a>
+                  <% if (foundAuthor != null) { %>
+                  <form class="mt-2" action="/portfolio/<%= portfolio.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete Portfolio</button>
+                  </form>
+                  <% } %>
+                </div>
+              </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') -%>

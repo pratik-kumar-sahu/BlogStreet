@@ -1,5 +1,6 @@
 * {
-  font-family: 'Source Code Pro', monospace;
+  font-family: monospace, 'Source Code Pro';
+  font-size: 17px;
 }
 
 .brand-name-user {
@@ -24,14 +25,14 @@
   -o-border-radius: 10px;
 }
 
-form {
+/* form {
   float: right;
   width: 20%;
-}
+} */
 
 .nav-tabs {
   float: left;
-  width: 45%;
+  width: 100%;
 }
 
 .nav-user-one {
@@ -43,7 +44,7 @@ form {
 }
 
 .header-content {
-  padding: 5% 0;
+  padding: 8% 0;
 }
 
 .header-heading {
@@ -95,7 +96,7 @@ form {
 
 .brag-user {
   padding: 8% 0;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .size-user-two {
@@ -111,8 +112,8 @@ form {
 }
 
 .newsletter {
-  width: 50%;
-  margin: auto 25%;
+  width: 70%;
+  margin: auto 15%;
 }
 
 .newsletter-checkbox {
@@ -131,4 +132,50 @@ form {
 .accordion {
   width: 70%;
   margin: auto 15%;
+}
+
+#footer {
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  padding: 80px 0;
+  position: relative;
+}
+
+#footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #6c63ff;
+}
+
+#footer .container {
+  position: relative;
+}
+
+#footer h3 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  position: relative;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+#footer p {
+  font-size: 15;
+  font-style: italic;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+#footer .copyright {
+  margin: 0 0 5px 0;
+}
+
+#footer .credits {
+  font-size: 13px;
 }

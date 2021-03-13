@@ -12,7 +12,7 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -22,12 +22,13 @@
     />
 
     <title>BlogStreet</title>
+    <link rel="shortcut icon" type="image/jpg" href="/../../src/stylesheets/favicon.ico"/>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand brand-name-user" href="#">BlogStreet</a>
+        <a style="margin-left: 8%;" class="navbar-brand brand-name-user mb-2" href="/"><img style="height: 40px;" src="../../src/stylesheets/main.png" alt="logo"></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -45,10 +46,7 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="#">About</a>
             </li>
             <% if (!user) { %>
             <li class="nav-item">
@@ -62,6 +60,12 @@
               <a class="nav-link" href="/auth/logout">Logout</a>
             </li>
             <% } %>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/portfolio/fill">Fill</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/portfolio/profile">Profile</a>
+            </li>
           </ul>
         </div>
       </div>
