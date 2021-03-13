@@ -1,4 +1,8 @@
 const mongoose = require('mongoose');
+const marked = require('marked');
+const createDomPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+const dompurify = createDomPurify(new JSDOM().window);
 
 const articleSchema = new mongoose.Schema({
   title: {
@@ -11,6 +15,7 @@ const articleSchema = new mongoose.Schema({
   },
   description: {
     type: String,
+    required: true,
   },
   markdown: {
     type: String,
@@ -21,11 +26,10 @@ const articleSchema = new mongoose.Schema({
     default: Date.now,
   },
   author: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-    username: String,
+    type: String,
+  },
+  authorEmail: {
+    type: String,
   },
   comments: [
     {
@@ -33,6 +37,17 @@ const articleSchema = new mongoose.Schema({
       ref: 'Comment',
     },
   ],
+  sanitizedHtml: {
+    type: String,
+    required: true,
+  },
+});
+
+articleSchema.pre('validate', function (next) {
+  if (this.markdown) {
+    this.sanitizedHtml = dompurify.sanitize(marked(this.markdown));
+  }
+  next();
 });
 
 module.exports = mongoose.model('Article', articleSchema);
