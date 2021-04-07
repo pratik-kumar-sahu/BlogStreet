@@ -14,18 +14,6 @@ Check Us Out
 
 ---
 
-## Project Screenshots
-
-Home Page
-
-Create Blog
-
-Comment Section
-
-Read More
-
----
-
 ## Requirements
 
 For development, you will only need Node.js and a node global package, Yarn, installed in your environement.
@@ -55,9 +43,11 @@ You can find more information about the installation on the [official Node.js we
 If the installation was successful, you should be able to run the following command.
 
 ```
-$ node -v14.15.3
+$ node
+-v14.15.3
 
-$ npm -v6.14.9
+$ npm
+-v6.14.9
 ```
 
 ---
@@ -66,18 +56,18 @@ $ npm -v6.14.9
 
 After installing node, this project will need many NPM Packages, so just run the following command to install all.
 
-$ git clone (https://github.com/attainu/backend-project-pratik-sahu-au13.git)
+$ git clone (https://github.com/pratik-sahu-au13/BlogStreet.git)
 
-$ cd Name of the project
+$ cd BlogStreet/
 
-$ npm i
+$ npm install
 
 ---
 
 ## Running The Project
 
 ```sh
-$ npm run start
+$ npm start
 ```
 
 ## NPM Packages Used -
