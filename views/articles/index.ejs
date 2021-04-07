@@ -52,10 +52,11 @@
   </div>
 </div>
 
+<div class="container">
   <div class="row">
     <% articles.forEach(article => { %>
-    <div style="margin: 0 auto;" class="col-md-6 col-lg-4 mt-5">
-      <div class="card card-user" style="width: 20rem">
+    <div class="col-md-6 col-lg-4 mt-5">
+      <div class="card card-user" style="width: 20rem; margin: 0 auto;">
         <img class="card-img-top" src="<%= article.image %>" alt="image" />
         <!-- https://images.unsplash.com/photo-1614588108027-22a021c8d8e1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80 -->
         <div class="card-body">
@@ -72,6 +73,7 @@
     </div>
     <% }) %>
   </div>
+</div>
 </div>
 
 <!-- Pagination -->
@@ -153,7 +155,7 @@
 </div>
 
 <!-- FAQ -->
-<div class="container margin-user">
+<div id="faq" class="container margin-user">
   <div class="row mb-3">
     <h1 class="faq-heading">FAQ</h1>
   </div>

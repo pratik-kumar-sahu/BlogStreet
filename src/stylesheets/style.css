@@ -74,6 +74,9 @@
   .card-img-top {
     height: 19vw;
   }
+
+  .size-user-two {
+  }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
@@ -104,7 +107,7 @@
   height: 250px;
   width: 400px;
   object-fit: cover;
-  margin-left: 10%;
+  margin: 0 9%;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
