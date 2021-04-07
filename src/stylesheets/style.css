@@ -107,7 +107,7 @@
   height: 250px;
   width: 400px;
   object-fit: cover;
-  margin: 0 9%;
+  margin-left: 0;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
