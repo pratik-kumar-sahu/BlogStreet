@@ -27,7 +27,7 @@ router
   .route('/:id')
   .get(portfolioController.getPortfolio)
   // .put(portfolioController.editPortfolio)
-  .delete(middleware.notAuthorized, portfolioController.deletePortfolio);
+  .delete(middleware.checkCrudAuthority, portfolioController.deletePortfolio);
 
 // router.route('/:id/edit').get(portfolioController.editPortfolioRoute);
 

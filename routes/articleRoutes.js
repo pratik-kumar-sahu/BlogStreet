@@ -18,12 +18,12 @@ router
 
 router
   .route('/:id/edit')
-  .get(middleware.checkUserSession, articleController.getEditRoute);
+  .get(middleware.checkCrudAuthority, articleController.getEditRoute);
 
 router
   .route('/:id')
   .get(middleware.currentUser, articleController.getArticle)
-  .put(middleware.checkUserSession, articleController.editArticle)
-  .delete(middleware.checkUserSession, articleController.deleteArticle);
+  .put(middleware.checkCrudAuthority, articleController.editArticle)
+  .delete(middleware.checkCrudAuthority, articleController.deleteArticle);
 
 module.exports = router;

@@ -54,3 +54,18 @@ exports.currentUser = (req, res, next) => {
   res.locals.user = req.session.userId;
   next();
 };
+
+exports.checkCrudAuthority = async (req, res, next) => {
+  const currentUser = await User.findById({ _id: req.session.userId });
+  const article = await Article.findById(req.params.id);
+  if (
+    currentUser.email === article.authorEmail ||
+    currentUser.role === 'Admin'
+  ) {
+    console.log(currentUser.email, article.authorEmail, currentUser.role);
+    next();
+  } else {
+    console.log(currentUser.email, article.authorEmail, currentUser.role);
+    res.redirect('/');
+  }
+};
