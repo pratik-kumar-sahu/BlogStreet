@@ -8,6 +8,7 @@ const articleSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    maxLength: 200,
   },
   image: {
     type: String,
@@ -16,6 +17,7 @@ const articleSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+    maxLength: 200,
   },
   markdown: {
     type: String,

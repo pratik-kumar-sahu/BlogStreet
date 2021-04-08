@@ -82,7 +82,7 @@
   </div>
   <div class="row mt-3 blog-content">
     <form action="/articles/<%= article._id %>/comments" method="POST">
-      <textarea style="width: 100%; height: 100px; display: block;" name="content" cols="91" rows="10" placeholder="Add comments here..." required></textarea>
+      <textarea style="width: 100%; height: 100px; display: block;" name="content" cols="91" rows="10" placeholder="Add comments here..." required maxlength="190"></textarea>
       <button style="background-color: #6C63FF;" type="submit" class="btn btn-primary mt-3">Post</button>
     </form>
   </div>
