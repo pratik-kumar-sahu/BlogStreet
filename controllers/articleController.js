@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 
 exports.getHomepage = async (req, res) => {
   try {
-    const articles = await Article.find().sort({ createdAt: 'desc' });
+    const articles = await Article.find().sort({ createdAt: 'asc' });
     // console.log(articles);
     res.render('articles/index', {
       articles: articles,
