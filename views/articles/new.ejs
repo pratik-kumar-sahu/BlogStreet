@@ -19,6 +19,7 @@
         id="title"
         class="form-control"
         placeholder="Give a wonderful title"
+        maxlength="150"
       />
     </div>
     <div class="form-group mb-2">
@@ -33,7 +34,7 @@
         placeholder="Give an image url"
       />
     </div>
-    <div class="form-group mb-2"><label for="description">Description</label><textarea name="description" id="description" class="form-control" placeholder="Give one line intro of the blog"><%= article.description %></textarea>
+    <div class="form-group mb-2"><label for="description">Description</label><textarea name="description" id="description" class="form-control" placeholder="Give one line intro of the blog" maxlength="150"><%= article.description %></textarea>
     </div>
     <div class="form-group mb-3">
       <label for="markdown">Brief Summary</label>
